@@ -9,12 +9,11 @@ import (
 )
 
 func main() {
-	// Create a new secrets client
 	client, err := secretsmanager.GetAwsClient(secretsmanager.AwsSecretClientConfig{
-		Application: "common",
-		Environment: "staging",
-		Region:      "us-east-2",
-		CacheTTL:    600, // 10 minutes
+		Application: "XXX",
+		Environment: "XXX",
+		Region:      "us-east-1",
+		CacheTTL:    600,
 	})
 
 	if err != nil {
@@ -23,7 +22,6 @@ func main() {
 
 	ctx := context.Background()
 
-	// Example: Get a single secret
 	secretValue, err := client.Get(ctx, "homewise_bot_api_key")
 	if err != nil {
 		if secretsmanager.IsSecretNotFoundError(err) {
